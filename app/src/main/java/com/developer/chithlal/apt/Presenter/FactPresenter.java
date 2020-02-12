@@ -19,7 +19,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FactPresenter implements ApiInterface.LogicController {
-    private String baseUrl = "https://dl.dropboxusercontent.com/";
     private ApiInterface.ViewController viewController;
     public FactPresenter(ApiInterface.ViewController viewController) {
         this.viewController = viewController;
@@ -28,7 +27,8 @@ public class FactPresenter implements ApiInterface.LogicController {
     @Override
     public void LoadList() {
 
-        Retrofit retrofit = new Retrofit.Builder()
+        String baseUrl = "https://dl.dropboxusercontent.com/";
+        Retrofit retrofit = new Retrofit.Builder()          // Initializing retrofit builder for http connection
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -40,14 +40,19 @@ public class FactPresenter implements ApiInterface.LogicController {
         viewController.showErrorMessage("Method:getJSONData");
         JSONResponse jsonResponse = null;
         HTTPRequestInterface httpRequest = retrofit.create(HTTPRequestInterface.class);
-        Call<JSONResponse> call = httpRequest.getJSONData();
+        Call<JSONResponse> call = httpRequest.getJSONData();     //http get request
         call.enqueue(new Callback<JSONResponse>() {
             @Override
             public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
-                JSONResponse jsonResponse = response.body();
-                Log.d("JSON BODY:\n",response.body().getTitle());
-                List<Fact> factList = parseJson(jsonResponse);
-                if(factList.size()!=0) viewController.updateList(factList);
+                try {
+                    JSONResponse jsonResponse = response.body();
+                    Log.d("JSON BODY:\n",response.body().getTitle());
+                    List<Fact> factList = parseJson(jsonResponse);
+                    if(factList.size()!=0) viewController.updateList(factList);
+                }catch (NullPointerException e){
+
+                }
+
 
             }
 
@@ -60,13 +65,21 @@ public class FactPresenter implements ApiInterface.LogicController {
 
     private List<Fact> parseJson(JSONResponse jsonResponse) {
 
-        List<Fact> factList = new ArrayList<Fact>();
+        List<Fact> factList = new ArrayList<Fact>();    // Parsing response object to get actual data
         String title = jsonResponse.getTitle();
         if(!title.isEmpty()) viewController.setTitle(title);
         List<Row> rowList = jsonResponse.getRows();
         for(Row row:rowList){
-            factList.add(new Fact(row.getTitle(),row.getDescription(),row.getImageHref()));
+            factList.add(new Fact(row.getTitle(),row.getDescription(),parseURL(row.getImageHref())));
         }
         return factList;
+    }
+    private String parseURL(String s){
+        String url="";
+
+        if(s!=null)
+            url = s.replace("http://", "https://");
+
+        return url;
     }
 }

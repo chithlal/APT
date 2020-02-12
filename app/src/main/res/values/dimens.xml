@@ -4,11 +4,12 @@
     <dimen name="height_progressbar">100dp</dimen>
     <dimen name="card_cornner_rad">10dp</dimen>
     <dimen name="card_min_height">100dp</dimen>
-    <dimen name="card_title_size">18sp</dimen>
+    <dimen name="card_title_size">15sp</dimen>
     <dimen name="card_title_margin_top">5dp</dimen>
     <dimen name="card_title_margin_start">5dp</dimen>
     <dimen name="line_height">2dp</dimen>
     <dimen name="line_marin">3dp</dimen>
     <dimen name="image_height">100dp</dimen>
     <dimen name="margin_description_layout">5dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
 </resources>

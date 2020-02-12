@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface ApiInterface {
 
-     interface ViewController{
+     interface ViewController{     // To update views
          void updateList(List<Fact> factList);
          void onRefresh(List<Fact> factList);
          void showErrorMessage(String message);
          void setTitle(String title);
     }
 
-     interface LogicController{
+     interface LogicController{    // app logic controller
         void LoadList();
     }
 }

@@ -1,16 +1,24 @@
 package com.developer.chithlal.apt.Adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-//import com.bumptech.glide.Glide;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.developer.chithlal.apt.Models.Fact;
 import com.developer.chithlal.apt.R;
 
@@ -35,9 +43,23 @@ public class FactListAdapter extends RecyclerView.Adapter<FactListAdapter.FactVi
     @Override
     public void onBindViewHolder(@NonNull FactViewHolder factViewHolder, int i) {
         Fact fact = factList.get(i);
-        factViewHolder.cardTitle.setText(fact.getTitle());
+        factViewHolder.cardTitle.setText(fact.getTitle());              // Setting the data to corresponding place
         factViewHolder.cardDesc.setText(fact.getDescription());
-        //Glide.with(context).load(fact.getImgURL()).into(factViewHolder.imagePreview);
+        if(!fact.getImgURL().isEmpty()&&fact.getImgURL()!=null)    // Loading image
+        Glide.with(context).load(fact.getImgURL()).listener(new RequestListener<Drawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                factViewHolder.imagePreview.setImageResource(android.R.drawable.ic_menu_gallery);
+                return true;
+            }
+
+            @Override
+            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                return false;
+            }
+        }).into(factViewHolder.imagePreview);
+        else factViewHolder.imagePreview.setImageResource(android.R.drawable.ic_menu_gallery);
+
     }
 
 
