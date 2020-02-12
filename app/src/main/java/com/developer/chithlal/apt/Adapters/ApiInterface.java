@@ -9,6 +9,8 @@ public interface ApiInterface {
      interface ViewController{
          void updateList(List<Fact> factList);
          void onRefresh(List<Fact> factList);
+         void showErrorMessage(String message);
+         void setTitle(String title);
     }
 
      interface LogicController{

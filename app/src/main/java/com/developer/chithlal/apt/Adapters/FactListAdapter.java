@@ -1,6 +1,7 @@
 package com.developer.chithlal.apt.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+//import com.bumptech.glide.Glide;
 import com.developer.chithlal.apt.Models.Fact;
 import com.developer.chithlal.apt.R;
 
@@ -35,8 +37,10 @@ public class FactListAdapter extends RecyclerView.Adapter<FactListAdapter.FactVi
         Fact fact = factList.get(i);
         factViewHolder.cardTitle.setText(fact.getTitle());
         factViewHolder.cardDesc.setText(fact.getDescription());
-
+        //Glide.with(context).load(fact.getImgURL()).into(factViewHolder.imagePreview);
     }
+
+
 
     @Override
     public int getItemCount() {
