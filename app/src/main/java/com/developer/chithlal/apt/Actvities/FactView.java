@@ -26,12 +26,15 @@ public class FactView extends AppCompatActivity implements ApiInterface.ViewCont
     private Toolbar toolbar;
     private SwipeRefreshLayout swipeRefreshLayout;
     private List<Fact> factList = new ArrayList<>();
+    private String emptyString = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fact_view);
         toolbar =  findViewById(R.id.toolbar );
+        toolbar.setTitle(emptyString);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorActionbarTitile));
         setSupportActionBar(toolbar);                   //setting up toolbar as actionbar
 
         swipeRefreshLayout = findViewById(R.id.swiperefresh);
@@ -69,6 +72,7 @@ public class FactView extends AppCompatActivity implements ApiInterface.ViewCont
     @Override
     public void setTitle(String title) {
         toolbar.setTitle(title);  //setting toolbar title
+
     }
 
     @Override

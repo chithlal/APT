@@ -20,6 +20,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),FactView.class);
                 startActivity(intent);
             }
-        },5000);
+        },2000);
     }
 }

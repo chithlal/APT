@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:minHeight="@dimen/card_min_height"
+    android:layout_marginBottom="@dimen/card_bottom_margin"
     android:id="@+id/card_fact"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/card_cornner_rad"
