@@ -4,7 +4,7 @@
     <dimen name="height_progressbar">100dp</dimen>
     <dimen name="card_cornner_rad">5dp</dimen>
     <dimen name="card_min_height">100dp</dimen>
-    <dimen name="card_title_size">15sp</dimen>
+    <dimen name="card_title_size">19sp</dimen>
     <dimen name="card_title_margin_top">5dp</dimen>
     <dimen name="card_title_margin_start">5dp</dimen>
     <dimen name="line_height">1.5dp</dimen>
@@ -13,4 +13,6 @@
     <dimen name="margin_description_layout">5dp</dimen>
     <dimen name="card_elevation">5dp</dimen>
     <dimen name="card_bottom_margin">5dp</dimen>
+    <dimen name="size_app_name">20sp</dimen>
+    <dimen name="card_desc_size">15sp</dimen>
 </resources>

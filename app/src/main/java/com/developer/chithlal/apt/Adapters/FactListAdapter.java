@@ -22,13 +22,14 @@ import com.bumptech.glide.request.target.Target;
 import com.developer.chithlal.apt.Models.Fact;
 import com.developer.chithlal.apt.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FactListAdapter extends RecyclerView.Adapter<FactListAdapter.FactViewHolder> {
     private final Context context;
-    private final List<Fact> factList;
+    private final ArrayList<Fact> factList;
 
-    public FactListAdapter(Context context, List<Fact> factList) {
+    public FactListAdapter(Context context, ArrayList<Fact> factList) {
         this.context = context;
         this.factList = factList;
     }

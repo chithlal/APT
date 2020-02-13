@@ -37,7 +37,6 @@ public class FactPresenter implements ApiInterface.LogicController {
 
     }
     private void getJSONData(Retrofit retrofit){
-        viewController.showErrorMessage("Method:getJSONData");
         JSONResponse jsonResponse = null;
         HTTPRequestInterface httpRequest = retrofit.create(HTTPRequestInterface.class);
         Call<JSONResponse> call = httpRequest.getJSONData();     //http get request
@@ -47,7 +46,7 @@ public class FactPresenter implements ApiInterface.LogicController {
                 try {
                     JSONResponse jsonResponse = response.body();
                     Log.d("JSON BODY:\n",response.body().getTitle());
-                    List<Fact> factList = parseJson(jsonResponse);
+                    ArrayList<Fact> factList = parseJson(jsonResponse);
                     if(factList.size()!=0) viewController.updateList(factList);
                 }catch (NullPointerException e){
 
@@ -63,13 +62,15 @@ public class FactPresenter implements ApiInterface.LogicController {
         });
     }
 
-    private List<Fact> parseJson(JSONResponse jsonResponse) {
+    private ArrayList<Fact> parseJson(JSONResponse jsonResponse) {
 
-        List<Fact> factList = new ArrayList<Fact>();    // Parsing response object to get actual data
+        ArrayList<Fact> factList = new ArrayList<Fact>();    // Parsing response object to get actual data
         String title = jsonResponse.getTitle();
         if(!title.isEmpty()) viewController.setTitle(title);
         List<Row> rowList = jsonResponse.getRows();
         for(Row row:rowList){
+            if((row.getTitle()!=null &&row.getTitle().length()!=0)&& (row.getDescription()!=null && row.getDescription().length()!=0)
+                && (row.getImageHref()!=null&&row.getImageHref().length()!=0))
             factList.add(new Fact(row.getTitle(),row.getDescription(),parseURL(row.getImageHref())));
         }
         return factList;

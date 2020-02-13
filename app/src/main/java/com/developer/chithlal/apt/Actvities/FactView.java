@@ -1,6 +1,10 @@
 package com.developer.chithlal.apt.Actvities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,14 +29,18 @@ public class FactView extends AppCompatActivity implements ApiInterface.ViewCont
     private FactListAdapter factListAdapter;
     private Toolbar toolbar;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private List<Fact> factList = new ArrayList<>();
-    private String emptyString = "";
+    private ArrayList<Fact> factList = new ArrayList<>();
+    private String errorMgsNoConnection = "No internet connection available!";
+    private String FACT_LIST = "fact_list";
+    private String TITLE = "Title";
+    private String toolbarTitle = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fact_view);
         toolbar =  findViewById(R.id.toolbar );
+        String emptyString = "";
         toolbar.setTitle(emptyString);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorActionbarTitile));
         setSupportActionBar(toolbar);                   //setting up toolbar as actionbar
@@ -43,13 +51,34 @@ public class FactView extends AppCompatActivity implements ApiInterface.ViewCont
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));        // Arranging cards in linear way
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         factPresenter = new FactPresenter(this);                    // handle to presnter and logic controller
-        factPresenter.LoadList();
-        swipeRefreshLayout.setRefreshing(true);
+
+        if(savedInstanceState == null || !savedInstanceState.containsKey(FACT_LIST) ) {
+            swipeRefreshLayout.setRefreshing(true);
+            if (isConnectionAvailable())
+                factPresenter.LoadList();
+            else showErrorMessage(errorMgsNoConnection);
+        }
+        else {
+            this.factList = savedInstanceState.getParcelableArrayList(FACT_LIST);
+            factListAdapter = new FactListAdapter(this,this.factList);
+            recyclerView.setAdapter(factListAdapter);
+            setTitle(savedInstanceState.getString(TITLE));
+        }
+
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        outState.putParcelableArrayList(FACT_LIST,this.factList);
+        if(toolbarTitle.length()!=0)
+        outState.putString(TITLE,toolbarTitle);
+        super.onSaveInstanceState(outState);
+
+    }
 
     @Override
-    public void updateList(List<Fact> factList) {
+    public void updateList(ArrayList<Fact> factList) {
         swipeRefreshLayout.setRefreshing(false);
         this.factList=factList;
         factListAdapter = new FactListAdapter(this,this.factList);
@@ -58,7 +87,7 @@ public class FactView extends AppCompatActivity implements ApiInterface.ViewCont
     }
 
     @Override
-    public void onRefresh(List<Fact> factList) {
+    public void onRefresh(ArrayList<Fact> factList) {
         this.factList.clear();
         this.factList=factList;
         factListAdapter.notifyDataSetChanged();
@@ -71,13 +100,26 @@ public class FactView extends AppCompatActivity implements ApiInterface.ViewCont
 
     @Override
     public void setTitle(String title) {
+        toolbarTitle = title;
         toolbar.setTitle(title);  //setting toolbar title
 
     }
 
     @Override
     public void onRefresh() {
-        factPresenter.LoadList();
-        swipeRefreshLayout.setRefreshing(false);
+        if(isConnectionAvailable()) {
+            factPresenter.LoadList();
+            swipeRefreshLayout.setRefreshing(false);
+        }
+        else {
+            showErrorMessage(errorMgsNoConnection);
+            swipeRefreshLayout.setRefreshing(true);
+        }
+
+    }
+    private boolean isConnectionAvailable(){
+        ConnectivityManager connectivityManager = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
 }

@@ -6,13 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Actvities.MainActivity">
 
-    <ProgressBar
-        android:layout_width="@dimen/width_progressbar"
-        android:layout_height="@dimen/height_progressbar"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:text="@string/apt_string"
         android:layout_marginBottom="8dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/size_app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
