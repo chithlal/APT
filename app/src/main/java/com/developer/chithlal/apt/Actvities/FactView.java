@@ -3,6 +3,7 @@ package com.developer.chithlal.apt.Actvities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.developer.chithlal.apt.Adapters.ApiInterface;
@@ -121,5 +125,23 @@ public class FactView extends AppCompatActivity implements ApiInterface.ViewCont
         ConnectivityManager connectivityManager = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+         super.onOptionsItemSelected(item);
+         if(item.getItemId()== R.id.credit){
+             Intent it = new Intent(getApplicationContext(),CreditsActivity.class);
+             startActivity(it);
+         }
+         return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+         super.onCreateOptionsMenu(menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.fact_menu, menu);
+        return true;
     }
 }

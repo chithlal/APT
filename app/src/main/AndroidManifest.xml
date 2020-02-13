@@ -13,14 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
-        >
-        <uses-library android:name="android.test.runner"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Actvities.CreditsActivity"></activity>
+
+        <uses-library
+            android:name="android.test.runner"
             android:required="false" />
 
-        <activity android:name=".Actvities.FactView">
-
-        </activity>
+        <activity android:name=".Actvities.FactView"></activity>
         <activity android:name=".Actvities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

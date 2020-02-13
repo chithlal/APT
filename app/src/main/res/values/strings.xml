@@ -3,4 +3,34 @@
     <string name="card_title">Title</string>
     <string name="card_description">Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony</string>
     <string name="apt_string">Android Proficiency Exercise</string>
+    <string name="credit">Credits</string>
+    <string name="glide_title">Glide</string>
+    <string name="glide_license">Sam Judd - @sjudd on GitHub, @samajudd on Twitter\n Licence \nBSD, part MIT and Apache 2.0. See the LICENSE file for details.</string>
+    <string name="retrofit_title">Retrofit</string>
+    <string name="retrofit_lic">Licence:\nCopyright 2013 Square, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+    Introduction
+    API Declaration
+    Retrofit Configuration
+    Download
+    Contributing
+    License
+
+    Javadoc
+    StackOverflow
+
+Square, Inc.
+</string>
 </resources>
