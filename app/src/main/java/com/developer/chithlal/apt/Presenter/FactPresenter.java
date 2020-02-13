@@ -37,7 +37,6 @@ public class FactPresenter implements ApiInterface.LogicController {
 
     }
     private void getJSONData(Retrofit retrofit){
-        JSONResponse jsonResponse = null;
         HTTPRequestInterface httpRequest = retrofit.create(HTTPRequestInterface.class);
         Call<JSONResponse> call = httpRequest.getJSONData();     //http get request
         call.enqueue(new Callback<JSONResponse>() {

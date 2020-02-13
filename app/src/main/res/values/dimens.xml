@@ -15,4 +15,6 @@
     <dimen name="card_bottom_margin">5dp</dimen>
     <dimen name="size_app_name">20sp</dimen>
     <dimen name="card_desc_size">15sp</dimen>
+    <dimen name="credit_title_margin">3dp</dimen>
+    <dimen name="margin_base_card">5dp</dimen>
 </resources>
