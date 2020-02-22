@@ -5,12 +5,15 @@ import com.developer.chithlal.apt.factslist.contract.FactContractMVP;
 import java.util.ArrayList;
 
 @SuppressWarnings("ALL")
+
+/* Delegating the data access layer from presnter*/
+
 public class FactsModel implements FactContractMVP.Model {
 
     private final FactRepository factRepository;
     private FactContractMVP.Presenter presenter;
 
-    public FactsModel(FactRepository factRepository) {
+    public FactsModel(FactRepository factRepository) { // setting up handle to repo
         this.factRepository = factRepository;
     }
 

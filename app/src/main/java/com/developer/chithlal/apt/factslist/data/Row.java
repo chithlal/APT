@@ -25,9 +25,9 @@ class Row {
 
     /**
      *
-     * @param imageHref
-     * @param description
-     * @param title
+     * @param imageHref image URL
+     * @param description Description text
+     * @param title Item title
      */
     public Row(String title, String description, String imageHref) {
         super();

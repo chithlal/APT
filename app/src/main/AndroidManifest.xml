@@ -24,7 +24,7 @@
             android:required="false" />
 
         <activity android:name=".factslist.activities.FactListActivity"
-            android:configChanges="orientation">
+            android:configChanges="keyboardHidden|orientation|screenSize">
 
         </activity>
         <activity android:name=".factslist.activities.MainActivity">

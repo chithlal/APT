@@ -54,7 +54,8 @@ public class FactListAdapter extends RecyclerView.Adapter<FactListAdapter.FactVi
 
             @Override
             public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                return false;
+                factViewHolder.imagePreview.setImageDrawable(resource);
+                return true;
             }
         }).into(factViewHolder.imagePreview);
         else factViewHolder.imagePreview.setImageResource(android.R.drawable.ic_menu_gallery);
