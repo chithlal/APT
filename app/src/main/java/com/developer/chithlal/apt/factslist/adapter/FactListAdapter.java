@@ -1,4 +1,4 @@
-package com.developer.chithlal.apt.Adapters;
+package com.developer.chithlal.apt.factslist.adapter;
 
 import android.content.Context;
 
@@ -12,18 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.developer.chithlal.apt.Models.Fact;
+import com.developer.chithlal.apt.factslist.data.Fact;
 import com.developer.chithlal.apt.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FactListAdapter extends RecyclerView.Adapter<FactListAdapter.FactViewHolder> {
     private final Context context;
@@ -71,9 +69,10 @@ public class FactListAdapter extends RecyclerView.Adapter<FactListAdapter.FactVi
     }
 
     public class FactViewHolder extends RecyclerView.ViewHolder {
-        TextView cardTitle,cardDesc;
-        ImageView imagePreview;
-        public FactViewHolder(@NonNull View itemView) {
+        final TextView cardTitle;
+        final TextView cardDesc;
+        final ImageView imagePreview;
+        FactViewHolder(@NonNull View itemView) {
             super(itemView);
             cardTitle = itemView.findViewById(R.id.tv_card_title);
             cardDesc = itemView.findViewById(R.id.tv_card_desc);

@@ -1,9 +1,10 @@
-package com.developer.chithlal.apt.Models;
+package com.developer.chithlal.apt.factslist.data;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Row {
+@SuppressWarnings("unused")
+class Row {
 
     @SerializedName("title")
     @Expose

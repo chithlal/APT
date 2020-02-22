@@ -1,4 +1,4 @@
-package com.developer.chithlal.apt.Actvities;
+package com.developer.chithlal.apt.factslist.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="width_progressbar">100dp</dimen>
-    <dimen name="height_progressbar">100dp</dimen>
-    <dimen name="card_cornner_rad">5dp</dimen>
+    <dimen name="card_corner_rad">5dp</dimen>
     <dimen name="card_min_height">100dp</dimen>
     <dimen name="card_title_size">19sp</dimen>
     <dimen name="card_title_margin_top">5dp</dimen>

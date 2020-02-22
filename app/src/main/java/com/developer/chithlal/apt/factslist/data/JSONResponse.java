@@ -1,9 +1,10 @@
-package com.developer.chithlal.apt.Models;
+package com.developer.chithlal.apt.factslist.data;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@SuppressWarnings("ALL")
 public class JSONResponse {
 
     @SerializedName("title")
@@ -12,13 +13,6 @@ public class JSONResponse {
     @SerializedName("rows")
     @Expose
     private List<Row> rows = null;
-
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    public JSONResponse() {
-    }
 
     /**
      *

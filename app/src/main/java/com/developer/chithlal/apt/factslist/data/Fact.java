@@ -1,14 +1,14 @@
-package com.developer.chithlal.apt.Models;
+package com.developer.chithlal.apt.factslist.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Fact implements Parcelable {
-    private String title ;
-    private String description;
-    private String imgURL;
+    private final String title ;
+    private final String description;
+    private final String imgURL;
 
-    public Fact(Parcel in){
+    private Fact(Parcel in){
         this.title = in.readString();
         this.description = in.readString();
         this.imgURL =  in.readString();
@@ -17,27 +17,15 @@ public class Fact implements Parcelable {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getImgURL() {
         return imgURL;
     }
 
-    public void setImgURL(String imgURL) {
-        this.imgURL = imgURL;
-    }
-
-    public Fact(String title, String description, String imgURL) {
+    Fact(String title, String description, String imgURL) {
         this.title = title;
         this.description = description;
         this.imgURL = imgURL;

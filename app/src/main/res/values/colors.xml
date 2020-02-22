@@ -4,5 +4,5 @@
     <color name="colorPrimaryDark">#37474f</color>
     <color name="colorAccent">#455a64</color>
     <color name="colorTitle">#263238</color>
-    <color name="colorActionbarTitile">#eceff1</color>
+    <color name="colorActionbarTitle">#eceff1</color>
 </resources>

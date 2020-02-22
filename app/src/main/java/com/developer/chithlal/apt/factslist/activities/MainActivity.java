@@ -1,4 +1,4 @@
-package com.developer.chithlal.apt.Actvities;
+package com.developer.chithlal.apt.factslist.activities;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -14,12 +14,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(getApplicationContext(),FactView.class);
-                startActivity(intent);
-            }
+        handler.postDelayed(() -> {
+            Intent intent = new Intent(getApplicationContext(), FactListActivity.class);
+            startActivity(intent);
         },2000);
     }
 }

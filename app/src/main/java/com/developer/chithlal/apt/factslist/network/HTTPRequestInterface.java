@@ -1,6 +1,6 @@
-package com.developer.chithlal.apt.NetworkHandler;
+package com.developer.chithlal.apt.factslist.network;
 
-import com.developer.chithlal.apt.Models.JSONResponse;
+import com.developer.chithlal.apt.factslist.data.JSONResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
